@@ -4,12 +4,20 @@
     "version": "0.0.0",
     "type": "module",
     "main": "electron/main.js",
+    "build": {
+        "appId": "com.zalosPrivatedLimited.yankit",
+        "files": [
+            "dist/**/*",
+            "electron/**/*",
+            "server/**/*"
+        ]
+    },
     "scripts": {
         "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
         "build": "vite build",
+        "electron:build": "electron-builder --win --linux",
         "start": "electron ."
     },
-
     "dependencies": {
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
@@ -21,6 +29,7 @@
         "@vitejs/plugin-react": "^4.3.4",
         "concurrently": "^9.1.2",
         "electron": "^35.1.4",
+        "electron-builder": "^26.0.12",
         "eslint": "^9.21.0",
         "eslint-plugin-react-hooks": "^5.1.0",
         "eslint-plugin-react-refresh": "^0.4.19",
