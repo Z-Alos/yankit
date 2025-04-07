@@ -5,28 +5,38 @@
   "description": "The ultimate app for modern tech wizards.",
   "author": "Zalos Private Limited",
   "type": "module",
-  "main": "electron/main.js",
+  "main": "main.js",
   "build": {
     "appId": "com.zalosPrivatedLimited.yankit",
     "productName": "Yankit",
+    "asar": true,
     "asarUnpack": [
-      "**/bin/**"
+      "**/bin/**",
+      "dist/**"
     ],
     "extraFiles": [
       {
         "from": "bin/",
         "to": "bin/",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
-    ]
-  },
-  "files": [
-    "dist/**/*",
-    "electron/**/*",
-    "server/**/*"
-  ],
-  "linux": {
-    "target": "AppImage"
+    ],
+    "files": [
+      "main.js",
+      "dist/**/*",
+      "server/**/*"
+    ],
+    "linux": {
+      "target": "AppImage"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
   },
   "scripts": {
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
@@ -35,10 +45,18 @@
     "start": "electron ."
   },
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "electron-squirrel-startup": "^1.0.1",
+    "express": "^5.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "yt-dlp-exec": "^1.0.2"
   },
   "devDependencies": {
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.0",
+    "@electron-forge/plugin-fuses": "^7.8.0",
+    "@electron/fuses": "^1.8.0",
     "@eslint/js": "^9.21.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -46,6 +64,7 @@
     "concurrently": "^9.1.2",
     "electron": "^35.1.4",
     "electron-builder": "^26.0.12",
+    "electron-forge-plugin-vite": "^0.6.1",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -54,4 +73,3 @@
     "wait-on": "^8.0.3"
   }
 }
-
