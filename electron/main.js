@@ -1,6 +1,11 @@
 import { app, BrowserWindow, Tray, Menu } from 'electron';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import '../server/server.js';
+
+// Rebuild __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let win;
 let tray = null;
@@ -11,13 +16,13 @@ function createWindow() {
     height: 700,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
-    }
+      contextIsolation: false,
+    },
   });
 
-  // win.loadURL('http://localhost:5173');
-  win.loadFile(path.join(__dirname, 'dist', 'index.html'));
-
+  // Use local build file
+    // win.loadURL('http://localhost:5173');
+  win.loadFile(path.join(__dirname, "../dist/index.html"));
   win.on('close', (e) => {
     if (!app.isQuiting) {
       e.preventDefault();
@@ -29,22 +34,23 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
 
-  tray = new Tray(path.join(__dirname, 'icon.png')); // Add your icon here
+  tray = new Tray(path.join(__dirname, 'icon.png')); // Make sure icon.png exists
   const trayMenu = Menu.buildFromTemplate([
     { label: 'Show App', click: () => win.show() },
-    { label: 'Quit', click: () => {
+    {
+      label: 'Quit',
+      click: () => {
         app.isQuiting = true;
         app.quit();
-      }
-    }
+      },
+    },
   ]);
-  tray.setToolTip('My Electron App');
+  tray.setToolTip('Yankit');
   tray.setContextMenu(trayMenu);
 
-  // Start at login, hidden
   app.setLoginItemSettings({
     openAtLogin: true,
-    openAsHidden: true
+    openAsHidden: true,
   });
 
   app.on('activate', () => {
@@ -54,9 +60,8 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
-  // Keep background running on all OS except macOS
   if (process.platform !== 'darwin') {
-    // Do nothing to keep app running
+    // Intentionally empty to allow background tray
   }
 });
 
