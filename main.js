@@ -1,7 +1,7 @@
 import { app, BrowserWindow, Tray, Menu } from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import './server/server.js';
+import './server.js';
 
 // Rebuild __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -27,7 +27,7 @@ function createWindow() {
     const isDev = !app.isPackaged;
     const indexPath = isDev
         ? 'http://localhost:5173'
-        : path.join(__dirname, 'dist/index.html');
+        : path.join(process.resourcesPath, 'app.asar', 'dist', 'index.html');
 
     if (isDev) {
         win.loadURL(indexPath);

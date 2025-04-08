@@ -11,22 +11,21 @@
     "productName": "Yankit",
     "asar": true,
     "asarUnpack": [
-      "**/bin/**",
-      "dist/**"
-    ],
-    "extraFiles": [
-      {
-        "from": "bin/",
-        "to": "bin/",
-        "filter": [
-          "**/*"
-        ]
-      }
+      "bin/**/*",
+       "node_modules/yt-dlp-exec/**/*"
     ],
     "files": [
       "main.js",
       "dist/**/*",
-      "server/**/*"
+      "server.js",
+      "bin/**/*",
+      "icon.png"
+    ],
+    "extraResources": [
+      {
+        "from": "bin/",
+        "to": "bin/"
+      }
     ],
     "linux": {
       "target": "AppImage"
@@ -41,12 +40,13 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "vite build",
-    "electron:build": "electron-builder --linux",
+    "electron:build": "electron-builder --linux --win",
     "start": "electron ."
   },
   "dependencies": {
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
+    "electron-is-dev": "^3.0.1",
     "electron-squirrel-startup": "^1.0.1",
     "express": "^5.1.0",
     "react": "^19.0.0",
