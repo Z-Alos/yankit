@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    font-size: 20px;
+}
+
+button{
+    border-radius: 10px;
+    padding: 10px;
+    background-image: linear-gradient(to right, #ed5187, #ed2666);
+    outline: none;
+    border: none;
+    color: white;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 1;
+}
+
+p{
+    color: white;
+}
+
+#center-it{
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#container{
+    max-width: 70%;
+}
+
+#paste-link{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+#paste-link input{
+    grid-column: span 2;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+#paste-link input:focus{
+    outline: 2px dashed red;
+    outline-offset: 3px;
+}
+
+#is-fetching{
+    margin-top: 1rem;
+}
+
+#links{
+    margin-top: 1rem;
+    color: white;
+}
+
+.link{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 15px 0;
+    max-width: 100%;
+    align-items: center;
+}
+
+.link button{
+    justify-self: end;
+}
+
+

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './yankit.css';
 
 const YankPanel = () => {
   const [url, setUrl] = useState("");
   const [videoTitle, setVideoTitle] = useState("");
   const [downloadOptions, setDownloadOptions] = useState("");
+    const [isFetching, setIsFetching] = useState(false);
 
   const handleDownload = async (url, videoFormatId, videoTitle) => {
     try {
@@ -16,8 +18,11 @@ const YankPanel = () => {
     }
   };
 
-  const handleInfo = async () => {
+  const handleInfo = async (e) => {
+    e.preventDefault()
     try {
+        setDownloadOptions("");
+        setIsFetching(true);
       const res = await axios.post("http://localhost:3000/api/getinfo", { url });
         // setDownloadLink(res);
         console.log(res)
@@ -30,10 +35,13 @@ const YankPanel = () => {
       console.error("Error:", err);
       alert("Something went wrong. Check the console.");
     }
+      setIsFetching(false);
   }
 
   return (
-    <div className="p-4">
+    <div id="center-it">
+      <div id="container">
+      <form id="paste-link">
       <input
         type="text"
         value={url}
@@ -42,22 +50,29 @@ const YankPanel = () => {
         className="border px-2 py-1 mr-2"
       />
       <button onClick={handleInfo} className="bg-blue-600 text-white px-3 py-1 rounded">
-        Get Info Baby!
+        Hit Me Baby!
       </button>
+      </form>
 
+        {isFetching && (
+            <p id="is-fetching">Please Wait Deepu Mammu...</p>
+        )}
       {downloadOptions && downloadOptions.length > 0 && (
-          <div className="mt-4">
-          <p>🎯 Direct Links:</p>
+          <div id="links">
+          <p>Download Links:</p>
           {downloadOptions.map((option, index) => (
-              <div key={index}>
-              <button onClick={() => handleDownload(url, option.formatID, videoTitle)} className="bg-blue-600 text-white px-3 py-1 rounded">
-               {option.resolution}
+              <div key={index} className="link">
+              <p>📺 Quality: {option.resolution}p</p>
+                  <p>📂 Size: {option.sizeMB}</p>
+                  <button onClick={() => handleDownload(url, option.formatID, videoTitle)} className="bg-blue-600 text-white px-3 py-1 rounded">
+                  Yoink ;)
               </button>
               </div>
           ))}
           </div>
       )}
 
+      </div>
       </div>
   );
 };

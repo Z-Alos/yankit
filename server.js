@@ -42,7 +42,7 @@ app.post("/api/getinfo", async (req, res) => {
         const parsedInfo = typeof info === "string" ? JSON.parse(info) : info;
 
         const filteredFormats = parsedInfo.formats
-            .filter((f) => f.vcodec && f.vcodec.includes("avc1") && f.ext === "mp4")
+            .filter((f) => f.vcodec && f.vcodec.includes("avc1") && f.format_note && f.filesize !== null && f.ext === "mp4")
             .map((f) => {
                 const res = f.format_note || f.height?.toString() || "Unknown";
                 return {
@@ -55,7 +55,7 @@ app.post("/api/getinfo", async (req, res) => {
             .sort((a, b) => {
                 const aIndex = RES_ORDER.indexOf(a.resolution);
                 const bIndex = RES_ORDER.indexOf(b.resolution);
-                return (aIndex === -1 ? Infinity : aIndex) - (bIndex === -1 ? Infinity : bIndex);
+                return (bIndex === -1 ? Infinity : bIndex) - (aIndex === -1 ? Infinity : aIndex);
             });
 
         res.json({
