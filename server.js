@@ -79,12 +79,22 @@ app.post("/api/download", async (req, res) => {
     try {
         console.log(`📥 Downloading: ${videoTitle} (${videoFormatId})`);
 
-        await ytdlp(url, {
+        const ytdlpOptions = {
             output: filePath,
             format: `${videoFormatId}+bestaudio[ext=m4a]`,
             mergeOutputFormat: "mp4",
             verbose: true,
-        });
+        };
+
+        if (process.platform === "win32") {
+            if (isDev) {
+                ytdlpOptions.ffmpegLocation = path.join(__dirname, "bin", "win", "ffmpeg.exe");
+            }else{
+            ytdlpOptions.ffmpegLocation =path.join(process.resourcesPath, "bin", "win", "ffmpeg.exe");
+            }
+        }
+
+        await ytdlp(url, ytdlpOptions);
 
         console.log("✅ Download complete. Sending file...");
 

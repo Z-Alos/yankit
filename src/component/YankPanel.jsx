@@ -60,6 +60,7 @@ const YankPanel = () => {
       {downloadOptions && downloadOptions.length > 0 && (
           <div id="links">
           <p>Download Links:</p>
+          <p id="title">Title: {videoTitle}</p>
           {downloadOptions.map((option, index) => (
               <div key={index} className="link">
               <p>📺 Quality: {option.resolution}p</p>
