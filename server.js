@@ -39,6 +39,7 @@ app.post("/api/getinfo", async (req, res) => {
             preferFreeFormats: true
         });
 
+        console.log(info)
         const parsedInfo = typeof info === "string" ? JSON.parse(info) : info;
 
         const filteredFormats = parsedInfo.formats

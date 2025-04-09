@@ -83,4 +83,15 @@ p{
     justify-self: end;
 }
 
+#title{
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#infoText{
+    font-weight: 500;
+}
+
+
 

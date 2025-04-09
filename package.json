@@ -12,7 +12,7 @@
     "asar": true,
     "asarUnpack": [
       "bin/**/*",
-       "node_modules/yt-dlp-exec/**/*"
+      "node_modules/yt-dlp-exec/**/*"
     ],
     "files": [
       "main.js",
@@ -34,13 +34,13 @@
       "target": "nsis"
     },
     "nsis": {
-    "oneClick": false,
-    "perMachine": false,
-    "allowToChangeInstallationDirectory": true,
-    "createDesktopShortcut": true,
-    "createStartMenuShortcut": true,
-    "shortcutName": "Yankit"
-  },
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Yankit"
+    },
     "mac": {
       "target": "dmg"
     }
@@ -48,11 +48,12 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "build": "vite build",
-    "electron:build": "electron-builder --linux --win",
+    "electron:build": "electron-builder --linux",
     "start": "electron ."
   },
   "dependencies": {
     "body-parser": "^2.2.0",
+    "bootstrap-icons": "^1.11.3",
     "cors": "^2.8.5",
     "electron-is-dev": "^3.0.1",
     "electron-squirrel-startup": "^1.0.1",

@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import './server.js';
 
-// Rebuild __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -12,14 +11,15 @@ let tray = null;
 
 function createWindow() {
     win = new BrowserWindow({
+        show: false,
         width: 1000,
         height: 700,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
         },
     });
-
     // Use local build file
     // win.loadURL('http://localhost:5173');
     // win.loadFile(path.join(__dirname, "../dist/index.html"));
@@ -35,6 +35,11 @@ function createWindow() {
         win.loadFile(indexPath);
     }
 
+    if (!process.argv.includes('--autostart')) {
+        win.once('ready-to-show', () => {
+            win.show();
+        });
+    }
 
     win.on('close', (e) => {
         if (!app.isQuiting) {
@@ -64,6 +69,7 @@ app.whenReady().then(() => {
     app.setLoginItemSettings({
         openAtLogin: true,
         openAsHidden: true,
+        args: ['--autostart'],
     });
 
     app.on('activate', () => {

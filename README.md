@@ -1,13 +1,43 @@
-# React + Vite
+# Yankit  
+_Yank videos from YouTube like you *own* the platform._  
+Just paste the YouTube link, smash the button, and 💣 **Boom!**  
+![Screenshot](./screenshots/hitMeBaby.png)  
+And yep, it can autostart on boot — so you're always in beast mode without lifting a finger.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🚀 Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🪟 Windows  
+- Head over to the [**Releases**](https://github.com/Z-Alos/yankit/releases) section.  
+- Download the `.exe` file.  
+- Run the installer (as if I needed to say it... but hey 😆).
 
-## Expanding the ESLint configuration
+### 🐧 Linux  
+- Same drill, go to [**Releases**](https://github.com/Z-Alos/yankit/releases).  
+- Download the `.AppImage`.  
+- Give it superpowers and run:
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# yankit
+```bash
+chmod +x Yankit.AppImage
+./Yankit.AppImage
+
+## 🧩 Make Downloading Effortless — With the Browser Extension
+
+Take your Yankit experience to the next level with the **official browser extension** 👉 [**Yankit Extension**](https://github.com/Z-Alos/youtube-video-dowloader)
+
+> ⚙️ Works seamlessly with **Chromium-based browsers** like:
+- Google Chrome  
+- Microsoft Edge  
+- Brave  
+but if you know about browser extension you can modify the **manifest.json** and make it work on any browser 
+
+### 🔗 Somethings to keep in mind   
+The extension still needs the **Yankit app** running in the background to handle downloading.  
+
+So don't forget to **install and run the app**, or the extension will just be sitting there, looking cute and doing nothing 😅.
+
+Adios Amigos
+Powering off
+~Zalos
+
