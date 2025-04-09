@@ -21,16 +21,11 @@ And yep, it can autostart on boot — so you're always in beast mode without lif
 ```bash
 chmod +x Yankit.AppImage
 ./Yankit.AppImage
+```
 
 ## 🧩 Make Downloading Effortless — With the Browser Extension
 
 Take your Yankit experience to the next level with the **official browser extension** 👉 [**Yankit Extension**](https://github.com/Z-Alos/youtube-video-dowloader)
-
-> ⚙️ Works seamlessly with **Chromium-based browsers** like:
-- Google Chrome  
-- Microsoft Edge  
-- Brave  
-but if you know about browser extension you can modify the **manifest.json** and make it work on any browser 
 
 ### 🔗 Somethings to keep in mind   
 The extension still needs the **Yankit app** running in the background to handle downloading.  
